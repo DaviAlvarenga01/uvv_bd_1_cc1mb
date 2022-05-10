@@ -14,7 +14,7 @@ GROUP BY f.sexo
 
 		-- QUESTÃO 3:
 
-SELECT d.nome_departamento, CONCAT (primeiro_nome,' ', nome_meio, ' ', ultimo_nome) AS nome, FLOOR(DATEDIFF(NOW(), f.data_nascimento) / 365.25) AS idade,f.data_nascimento, f.salario 
+SELECT d.nome_departamento, CONCAT (primeiro_nome,' ', nome_meio, ' ', ultimo_nome) AS NomeCompleto, FLOOR(DATEDIFF(NOW(), f.data_nascimento) / 365.25) AS idade,f.data_nascimento, f.salario 
 FROM departamento d 
 INNER JOIN 
  funcionarios f 
@@ -22,7 +22,7 @@ ON f.numero_departamento = d.numero_departamento
 
 
 		-- QUESTÃO 4: 
-SELECT CONCAT (primeiro_nome ,' ', nome_meio, ' ', ultimo_nome) AS nome, FLOOR(DATEDIFF(NOW(), data_nascimento) / 365.25) AS idade, f.data_nascimento, 
+SELECT CONCAT (primeiro_nome ,' ', nome_meio, ' ', ultimo_nome) AS NomeCompleto, FLOOR(DATEDIFF(NOW(), data_nascimento) / 365.25) AS idade, f.data_nascimento, 
 f.salario AS salarioAtual,
 CASE WHEN (f.salario < 35) then 20
 WHEN (f.salario > 35 ) then 15 
