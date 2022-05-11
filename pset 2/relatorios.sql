@@ -17,7 +17,7 @@ GROUP BY f.sexo
 SELECT d.nome_departamento, CONCAT (primeiro_nome,' ', nome_meio, ' ', ultimo_nome) AS NomeCompleto, FLOOR(DATEDIFF(NOW(), f.data_nascimento) / 365.25) AS idade,f.data_nascimento, f.salario 
 FROM departamento d 
 INNER JOIN 
- funcionarios f 
+funcionarios f 
 ON f.numero_departamento = d.numero_departamento 
 
 
@@ -32,7 +32,7 @@ ELSE (f.salario  * 0.15) + f.salario
 END AS salarioReajustado
 FROM funcionarios f 
 
-		-- QUESTÃO 5: CÓDIGO NÃO FUNCIONA
+		-- QUESTÃO 5: NT
 
 WITH gerente AS (SELECT CONCAT (f.primeiro_nome, ' ', f.nome_meio, ' ', f.ultimo_nome) as NomeCompleto, f.cpf, FROM funcionarios f)
 SELECT d.numero_departamento as departamento 
@@ -43,4 +43,26 @@ INNER JOIN gerente g ON g.cpf = d.cpf_gerente
 ORDER BY d.nome_departamento ASC, f.salario DESC
 
 
-		-- QUESTÃO 6: 
+		-- QUESTÃO 6: NT 
+SELECT CONCAT (f.primeiro_nome  ,' ', f.nome_meio, ' ', f.ultimo_nome) AS nomeCompleto_funcionario,
+CONCAT(d.nome_dependente,' ', f.nome_meio, ' ', f.ultimo_nome) AS nomeCompleto_dependente, dpt.nome_departamento, 
+FLOOR(DATEDIFF(NOW(), d.data_nascimento ) / 365.25) AS idade, 
+(CASE WHEN d.sexo = 'F' 
+THEN 'FEMININO'
+ELSE 'MASCULINO'
+END) AS sexo_dependente
+FROM funcionarios f 
+INNER JOIN departamento dpt 
+ON f.numero_departamento = dpt.numero_departamento 
+INNER JOIN dependente d 
+ON f.CPF = d.cpf_funcionario 
+
+		--QUESTÃO 7:
+SELECT CONCAT (f.primeiro_nome,' ', f.nome_meio,' ',f.ultimo_nome) AS nomeCompleto_funcionario, d2.nome_departamento, f.salario
+FROM funcionarios f 
+INNER JOIN departamento d2 
+ON f.numero_departamento = d2.numero_departamento 
+lEFT JOIN dependente d 
+ON f.CPF = d.cpf_funcionario 
+WHERE d.nome_dependente IS NULL 
+
