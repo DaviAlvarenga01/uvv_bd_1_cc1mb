@@ -66,3 +66,11 @@ lEFT JOIN dependente d
 ON f.CPF = d.cpf_funcionario 
 WHERE d.nome_dependente IS NULL 
 
+		 --QUESTÃO 8: 
+SELECT CONCAT (f.primeiro_nome,' ', f.nome_meio,' ',f.ultimo_nome) AS nomeCompleto_funcionario, d.nome_departamento, p.nome_projeto, t.horas 
+FROM funcionarios f 
+INNER JOIN departamento d on d.numero_departamento = f.numero_departamento 
+INNER JOIN trabalha_em t on t.cpf_funcionario = f.CPF
+INNER JOIN projeto p on p.numero_projeto = t.numero_projeto 
+ORDER BY p.numero_projeto 
+
