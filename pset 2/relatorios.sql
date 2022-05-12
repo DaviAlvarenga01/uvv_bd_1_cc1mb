@@ -106,9 +106,9 @@ INNER JOIN projeto p on p.numero_projeto = t.numero_projeto
 		--QUESTÃO 12: 
 SELECT d.nome_departamento, CONCAT (f.primeiro_nome,' ', f.nome_meio,' ',f.ultimo_nome) AS nomeCompleto_funcionario, p.nome_projeto, t.horas 
 FROM funcionarios f 
-inner join departamento d on d.numero_departamento = f.numero_departamento 
-inner join trabalha_em t on t.cpf_funcionario = f.CPF 
-inner join projeto p on p.numero_projeto = t.numero_projeto 
+INNER join departamento d on d.numero_departamento = f.numero_departamento 
+INNER join trabalha_em t on t.cpf_funcionario = f.CPF 
+INNER join projeto p on p.numero_projeto = t.numero_projeto 
 where t.horas = 0 
  
    
