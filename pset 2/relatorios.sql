@@ -34,10 +34,11 @@ FROM funcionarios f
 
 		-- QUESTÃO 5: NT
 
-WITH gerente AS (SELECT CONCAT (f.primeiro_nome, ' ', f.nome_meio, ' ', f.ultimo_nome) as NomeCompleto, f.cpf, FROM funcionarios f)
-SELECT d.nome_departamento,
+WITH gerente AS (SELECT CONCAT (f.primeiro_nome, ' ', f.nome_meio, ' ', f.ultimo_nome) as NomeCompleto, f.cpf
+FROM funcionarios f)
+SELECT CONCAT(f.primeiro_nome, ' ', f.nome_meio, ' ', f.ultimo_nome), d.nome_departamento, f.salario, FLOOR(DATEDIFF(NOW(), f.data_nascimento ) / 365.25) AS idade
 FROM departamento d
-INNER JOIN funcionario f
+INNER JOIN funcionarios f
 ON f.numero_departamento = d.numero_departamento
 INNER JOIN gerente g ON g.cpf = d.cpf_gerente
 ORDER BY d.nome_departamento ASC, f.salario DESC
