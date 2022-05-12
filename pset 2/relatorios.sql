@@ -32,7 +32,7 @@ ELSE (f.salario  * 0.15) + f.salario
 END AS salarioReajustado
 FROM funcionarios f 
 
-		-- QUESTÃO 5: NT
+		-- QUESTÃO 5: 
 
 WITH gerente AS (SELECT CONCAT (f.primeiro_nome, ' ', f.nome_meio, ' ', f.ultimo_nome) as NomeCompleto, f.cpf
 FROM funcionarios f)
@@ -44,7 +44,7 @@ INNER JOIN gerente g ON g.cpf = d.cpf_gerente
 ORDER BY d.nome_departamento ASC, f.salario DESC
 
 
-		-- QUESTÃO 6: NT 
+		-- QUESTÃO 6:  
 SELECT CONCAT (f.primeiro_nome  ,' ', f.nome_meio, ' ', f.ultimo_nome) AS nomeCompleto_funcionario,
 CONCAT(d.nome_dependente,' ', f.nome_meio, ' ', f.ultimo_nome) AS nomeCompleto_dependente, dpt.nome_departamento, 
 FLOOR(DATEDIFF(NOW(), d.data_nascimento ) / 365.25) AS idade, 
